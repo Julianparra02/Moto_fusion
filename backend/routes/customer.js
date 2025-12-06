@@ -51,17 +51,13 @@ router.get("/products/:id", async(req, res) => {
     }
 });
 
-router.get("/carts", async(req, res) => {
-    console.log(req.user);
+router.get("/carts", verifyToken, async(req, res) => {
     const userId = req.user.id;
     const items = await getCartItems(userId);
     res.send(items);
 });
 
-
-
-router.post("/carts/:id", async(req, res) => {
-    console.log(req.user);
+router.post("/carts/:id", verifyToken, async(req, res) => {
     const userId = req.user.id;
     const productId = req.params.id;
     const quantity = req.body.quantity;
@@ -69,16 +65,14 @@ router.post("/carts/:id", async(req, res) => {
     res.send(items);
 });
 
-
-router.delete("/carts/:id", async(req, res) => {
-    console.log(req.user);
+router.delete("/carts/:id", verifyToken, async(req, res) => {
     const userId = req.user.id;
     const productId = req.params.id;
     const items = await removefromCart(userId, productId);
     res.send(items);
 });
 
-router.post("/order", async(req, res) => {
+router.post("/order", verifyToken, async(req, res) => {
     const userId = req.user.id;
     const order = req.body;
     await addOrder(userId, order);
@@ -86,10 +80,11 @@ router.post("/order", async(req, res) => {
     return res.send({ message: "Pedido realizado con éxito" });
 });
 
-router.get("/orders", async(req, res) => {
+router.get("/orders", verifyToken, async(req, res) => {
     const userId = req.user.id;
     const orders = await getCustomerOrders(userId);
     return res.send(orders);
 });
+
 
 module.exports = router;

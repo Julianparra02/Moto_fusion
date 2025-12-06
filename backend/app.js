@@ -7,7 +7,7 @@ require("dotenv").config();
 const app = express();
 
 // Puerto Railway o 3000
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8888;
 
 // Middlewares
 app.use(cors());

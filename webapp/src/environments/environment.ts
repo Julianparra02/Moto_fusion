@@ -1,3 +1,3 @@
 export const environment = {
-      apiUrl:"http://myshop.test"
+      apiUrl:" https://motofusion-production.up.railway.app"
 };

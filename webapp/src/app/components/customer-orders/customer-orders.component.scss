@@ -1,0 +1,141 @@
+/* 🌟 Contenedor general */
+
+.orders-container {
+    padding: 40px 80px;
+}
+
+
+/* 🌟 Título principal */
+
+.orders-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #1a1a1a;
+}
+
+
+/* 🌟 Tarjeta de cada orden */
+
+.order-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 35px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    border: 1px solid #eeeeee;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.order-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.20);
+}
+
+
+/* 🌟 Encabezado de orden */
+
+.order-header {
+    margin-bottom: 15px;
+}
+
+.order-id {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.order-info {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+
+/* 🌟 Lista de items */
+
+.order-items {
+    margin-top: 15px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+
+/* 🌟 Item individual */
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+
+/* Imagen del producto */
+
+.order-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Información del producto */
+
+.order-item-details {
+    margin-left: 16px;
+}
+
+.order-item-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #222;
+}
+
+.order-item-price {
+    color: #666;
+    margin: 3px 0;
+}
+
+.order-item-total {
+    font-weight: 600;
+    color: #222;
+}
+
+
+/* Cantidad */
+
+.order-qty {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 992px) {
+    .orders-container {
+        padding: 30px 30px;
+    }
+    .order-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .order-item {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    .order-img {
+        width: 100%;
+        height: 200px;
+    }
+}

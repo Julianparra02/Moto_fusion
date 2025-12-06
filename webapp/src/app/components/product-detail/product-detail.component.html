@@ -1,0 +1,71 @@
+<div class="product-detail-wrapper" *ngIf="!loading && product; else loadingOrError">
+
+    <div class="product-detail-card">
+
+        <!-- Imagen principal -->
+        <div class="product-detail-image">
+            <img *ngIf="product.images.length; else noImage" [src]="product.images[0]" [alt]="product.name" />
+
+            <ng-template #noImage>
+                <div class="product-no-image">Sin imagen</div>
+            </ng-template>
+        </div>
+
+        <!-- Info del producto -->
+        <div class="product-detail-info">
+
+            <div>
+                <h2 class="product-title">{{ product.name }}</h2>
+                <p class="product-reference">Ref: {{ product.reference }}</p>
+            </div>
+
+            <div class="product-description">
+                {{ product.description }}
+            </div>
+
+            <div class="product-price">
+                {{ product.price | currency:'COP':'symbol-narrow' }}
+            </div>
+
+            <div class="product-meta">
+                <span>Marca producto:</span> {{ product.marca || 'N/A' }}<br>
+                <span>Modelo producto:</span> {{ product.modelo || 'N/A' }}<br>
+                <span>Año producto:</span> {{ product.year || 'N/A' }}
+            </div>
+
+            <div class="product-compatibility" *ngIf="product.compatibilidad.length > 0">
+                <h3>Compatibilidad</h3>
+                <ul>
+                    <li *ngFor="let c of product.compatibilidad">
+                        {{ c.marca }} - {{ c.modelo }} - {{ c.year }}
+                    </li>
+                </ul>
+            </div>
+
+            <div class="product-detail-buttons">
+
+                @if(isProductInCart(product._id!)) {
+                <button mat-raised-button color="primary" (click)="addToCart(product)">
+                    <mat-icon>remove_shopping_cart</mat-icon>
+                    remover el carrito
+                </button> } @else {
+                <button mat-raised-button color="primary" (click)="addToCart(product)">
+                    <mat-icon>add_shopping_cart</mat-icon>
+                    añadir el carrito
+                </button> }
+
+                <a mat-stroked-button color="primary" [routerLink]="['/product']">
+                    Volver
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<ng-template #loadingOrError>
+    <div class="product-loading">
+        <div *ngIf="loading">Cargando producto...</div>
+        <div *ngIf="!loading && error" class="product-error">{{ error }}</div>
+    </div>
+</ng-template>

@@ -1,0 +1,45 @@
+<header class="header">
+
+    <!-- Top Line -->
+    <div class="header__top">
+
+        <div class="header__logo cursor-pointer" routerLink="/">MOTOFUSION</div>
+
+        <div class="header__search">
+            <input #searchInput type="text" placeholder="Search..." [(ngModel)]="searchTerm" (keyup.enter)="onSearch($event)" />
+            <button class="search-btn" (click)="onSearch({ target: { value: searchInput.value } })">🔍</button>
+        </div>
+
+
+        <!-- Perfil + Login/Cerrar Sesión -->
+        <div class="header__profile flex items-center gap-2">
+            @if(authService.isAdmin){<a routerLink="/admin">{{ authService.userName }}</a> }@else {
+            <a [routerLink]="[ '/cart']">
+                <mat-icon class="text-white">shopping_cart</mat-icon>
+            </a>
+            <a routerLink="/profile">{{ authService.userName }}</a> } @if (authService.isLoggedIn ) { @if (!authService.isAdmin) {
+            <a [routerLink]="[ '/orders']">Orders</a> }
+            <a (click)="logout() " class="cursor-pointer ml-2 ">Cerrar</a> } @else {
+
+            <a [routerLink]="[ '/login'] " class="cursor-pointer ml-2 ">Iniciar</a>
+            <a [routerLink]="[ '/register'] " class="cursor-pointer ml-2 ">registrarse</a> }
+
+        </div>
+
+    </div>
+
+    <!-- Bottom Line (categorías) -->
+    @if (authService.isLoggedIn) {
+    <nav class="header__categories ">
+        <ul class="list-none flex gap-6 ">
+            @for (category of categoryList; track $index) {
+            <li (click)="searchCategory(category._id!)" class="cursor-pointer">
+                <a class="hover:text-rose-700 transition-colors ">{{ category.name }}</a>
+            </li>
+            }
+        </ul>
+    </nav>
+    }
+
+
+</header>

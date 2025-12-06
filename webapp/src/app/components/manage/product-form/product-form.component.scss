@@ -1,0 +1,219 @@
+/* ==========================================
+   CONTENEDOR PRINCIPAL
+========================================== */
+
+.product-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 10rem;
+    /* px-40 */
+    padding-right: 10rem;
+    margin-top: 2.5rem;
+    /* mt-10 */
+}
+
+
+/* ==========================================
+   HEADER PRINCIPAL (Título Add/Update)
+========================================== */
+
+.product-wrapper h1 {
+    font-size: 2rem;
+    /* text-2xl */
+    font-weight: 700;
+    /* font-bold */
+    margin-bottom: 1.5rem;
+    /* mb-6 */
+}
+
+
+/* ==========================================
+   FORMULARIO (CARD)
+========================================== */
+
+.product-form {
+    width: 100%;
+    max-width: 1100px;
+    /* max-w-4xl */
+    padding: 1.8rem;
+    /* p-6 */
+    background: #ffffff;
+    border-radius: 12px;
+    /* rounded-lg */
+    box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.12);
+    /* shadow */
+}
+
+
+/* ==========================================
+   SECCIÓN TITLES
+========================================== */
+
+.section-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #374151;
+    /* text-gray-700 */
+}
+
+
+/* ==========================================
+   GRID PERSONALIZADO (Reemplazo total de Tailwind)
+========================================== */
+
+.grid-1,
+.grid-2,
+.grid-3 {
+    display: grid;
+    gap: 1rem;
+}
+
+.grid-1 {
+    grid-template-columns: 1fr;
+}
+
+.grid-2 {
+    grid-template-columns: 1fr;
+}
+
+.grid-3 {
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+    .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+/* ==========================================
+   MAT-FORM-FIELD
+========================================== */
+
+.product-form mat-form-field {
+    width: 100%;
+}
+
+
+/* ==========================================
+   CHECKBOXES
+========================================== */
+
+.checkbox-row {
+    display: flex;
+    gap: 2rem;
+    /* gap-8 */
+    margin-top: 1rem;
+    align-items: center;
+}
+
+
+/* ==========================================
+   COMPATIBILIDAD PRINCIPAL
+========================================== */
+
+.compat-main {
+    margin-top: 2rem;
+}
+
+
+/* ==========================================
+   COMPATIBILIDAD EXTENDIDA
+========================================== */
+
+.compat-card {
+    border: 1px solid #e5e7eb;
+    /* border-gray-200 */
+    background: #f9fafb;
+    /* bg-gray-50 */
+    padding: 1rem;
+    /* p-4 */
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.compat-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: .8rem;
+}
+
+.compat-card-header h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4b5563;
+}
+
+
+/* ==========================================
+   IMÁGENES
+========================================== */
+
+.images-section {
+    margin-top: 2rem;
+}
+
+.images-actions {
+    display: flex;
+    gap: .5rem;
+}
+
+.image-field {
+    margin-bottom: 1rem;
+}
+
+
+/* ==========================================
+   BOTONES FINALES
+========================================== */
+
+.footer-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.footer-actions button {
+    min-width: 150px;
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 900px) {
+    .product-wrapper {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .product-wrapper {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .product-form {
+        padding: 1.3rem;
+    }
+    .images-actions {
+        flex-direction: column;
+    }
+    .footer-actions {
+        flex-direction: column;
+    }
+    .footer-actions button {
+        width: 100%;
+    }
+}

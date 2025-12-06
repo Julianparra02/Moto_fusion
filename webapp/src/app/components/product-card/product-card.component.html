@@ -1,0 +1,21 @@
+<div class="product-card" [routerLink]="'/product/' + product._id">
+
+    <img [src]="product.images[0] || ''" alt="Product Image">
+
+    <div class="product-card-content">
+        <h6>{{ product.name }}</h6>
+        <p>{{ product.description }}</p>
+
+        <div class="product-card-footer">
+            {{ product.price | currency:'COP':'symbol-narrow' }}
+
+            <button mat-fab color="primary" (click)="addToCart(product!)">
+                @if (product._id && isProductInCart(product._id!)) {
+                    <mat-icon>remove_shopping_cart</mat-icon>
+                } @else {
+                    <mat-icon>add_shopping_cart</mat-icon>
+                }
+            </button>
+        </div>
+    </div>
+</div>

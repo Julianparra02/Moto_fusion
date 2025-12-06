@@ -1,0 +1,136 @@
+/* ==========================================
+   WRAPPER PRINCIPAL
+========================================== */
+
+.filters-products-wrapper {
+    display: flex;
+    padding: 0 2.5rem;
+    /* px-10 */
+    padding-top: 0.5rem;
+    /* py-2 */
+    gap: 2rem;
+}
+
+
+/* ==========================================
+   COLUMNA IZQUIERDA — FILTROS
+========================================== */
+
+.filters-panel {
+    width: 30%;
+    /* w-4/12 */
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.filters-panel h6 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1f2937;
+}
+
+.filter-block {
+    margin-bottom: 1.2rem;
+}
+
+.filter-block mat-form-field {
+    width: 100%;
+}
+
+
+/* Botón Reiniciar */
+
+.reset-btn {
+    background: #dc2626;
+    color: #ffffff;
+    padding: 0.45rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.reset-btn:hover {
+    background: #b91c1c;
+}
+
+
+/* ==========================================
+   COLUMNA DERECHA — PRODUCTOS
+========================================== */
+
+.products-panel {
+    flex: 1;
+    /* flex-1 */
+}
+
+.products-panel h6 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1f2937;
+}
+
+.products-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+
+/* Cada card ocupa el 25% - espaciamiento */
+
+.product-grid-item {
+    width: 23%;
+    /* w-3/12 approx */
+}
+
+
+/* Texto no productos */
+
+.empty-message {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6b7280;
+    margin-top: 1rem;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 1024px) {
+    .product-grid-item {
+        width: 31%;
+    }
+    .filters-panel {
+        width: 35%;
+    }
+}
+
+@media (max-width: 768px) {
+    .filters-products-wrapper {
+        flex-direction: column;
+    }
+    .filters-panel {
+        width: 100%;
+    }
+    .products-panel {
+        width: 100%;
+    }
+    .product-grid-item {
+        width: 48%;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-grid-item {
+        width: 100%;
+    }
+}

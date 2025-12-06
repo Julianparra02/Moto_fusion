@@ -1,0 +1,90 @@
+/* ==========================================
+   CONTENEDOR PRINCIPAL
+========================================== */
+
+.register-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2.5rem;
+    /* mt-10 */
+}
+
+
+/* ==========================================
+   CARD DEL FORMULARIO
+========================================== */
+
+.register-card {
+    background: #ffffff;
+    padding: 2rem;
+    /* p-8 */
+    width: 50%;
+    /* w-6/12 */
+    max-width: 380px;
+    /* sm:w-96 */
+    border-radius: 12px;
+    /* rounded */
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.12);
+    /* shadow-md */
+}
+
+
+/* TÍTULO */
+
+.register-card h2 {
+    font-size: 1.75rem;
+    /* text-2xl */
+    font-weight: 700;
+    /* font-bold */
+    margin-bottom: 1rem;
+    /* mb-4 */
+    color: #111827;
+}
+
+
+/* ==========================================
+   ESPACIADO ENTRE CAMPOS
+========================================== */
+
+.form-field {
+    margin-bottom: 1rem;
+    /* mb-4 */
+}
+
+.form-field-last {
+    margin-bottom: 1.5rem;
+    /* mb-6 */
+}
+
+
+/* Angular Material ajustado */
+
+.register-card mat-form-field {
+    width: 100%;
+}
+
+
+/* ==========================================
+   BOTÓN
+========================================== */
+
+.register-card button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 600px) {
+    .register-card {
+        width: 90%;
+        padding: 1.5rem;
+    }
+}

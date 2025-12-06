@@ -1,0 +1,39 @@
+<div class="register-wrapper">
+    <div class="register-card">
+
+        <h2>Register</h2>
+
+        <form [formGroup]="registerForm">
+
+            <!-- NAME -->
+            <div class="form-field">
+                <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input matInput type="text" formControlName="name" placeholder="Your Name" required />
+                </mat-form-field>
+            </div>
+
+            <!-- EMAIL -->
+            <div class="form-field">
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput type="text" formControlName="email" placeholder="Your Email" required />
+                </mat-form-field>
+            </div>
+
+            <!-- PASSWORD -->
+            <div class="form-field-last">
+                <mat-form-field appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName="password" placeholder="Your Password" required />
+                </mat-form-field>
+            </div>
+
+            <!-- BUTTON -->
+            <button mat-raised-button color="primary" (click)="register()" [disabled]="registerForm.invalid">
+                Register
+            </button>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="login-wrapper">
+    <div class="login-card">
+        <form [formGroup]="loginForm">
+
+            <!-- EMAIL -->
+            <div class="form-group">
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput type="text" formControlName="email" placeholder="Your Email" required />
+                </mat-form-field>
+            </div>
+
+            <!-- PASSWORD -->
+            <div class="form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName="password" placeholder="Your Password" required />
+                </mat-form-field>
+            </div>
+
+            <!-- BUTTON -->
+            <button mat-raised-button color="primary" (click)="login()" [disabled]="loginForm.invalid">
+                Login
+            </button>
+
+        </form>
+    </div>
+</div>

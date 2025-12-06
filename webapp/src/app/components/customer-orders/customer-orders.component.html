@@ -1,0 +1,48 @@
+<div class="orders-container">
+    <h3 class="orders-title">Mis órdenes</h3>
+
+    @for (order of orders; track $index) {
+
+    <div class="order-card">
+
+        <!-- Header de la orden -->
+        <div class="order-header">
+            <h6 class="order-id">Orden # {{order._id}}</h6>
+            <p class="order-info">
+                <span>Fecha:</span> {{order.date | date:'mediumDate'}}
+            </p>
+            <p class="order-info">
+                Estado: {{order.status}}
+            </p>
+        </div>
+
+        <!-- Items -->
+        <div class="order-items">
+            @for (item of order.items; track $index) {
+            <div class="order-item">
+
+                <div class="flex items-center">
+                    <img [src]="item.product.images[0]" alt="Product" class="order-img" />
+
+                    <div class="order-item-details">
+                        <h2 class="order-item-title">{{ item.product.name }}</h2>
+                        <p class="order-item-price">Precio: {{ item.product.price }} COP</p>
+                        <span class="order-item-total">
+                                    Total: {{ item.product.price * item.quantity }} COP
+                                </span>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="font-medium">Cantidad:</span>
+                    <span class="order-qty">{{ item.quantity }}</span>
+                </div>
+
+            </div>
+            }
+        </div>
+
+    </div>
+
+    }
+</div>

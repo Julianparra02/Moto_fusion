@@ -1,0 +1,26 @@
+<div class="category-edit-wrapper">
+
+    @if(isEdit) {
+    <h1>Update Category</h1>
+    } @else {
+    <h1>Add New Category</h1>
+    }
+
+    <form class="category-edit-form">
+        <div class="inner-wrapper">
+
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput type="text" [(ngModel)]="name" name="name" />
+            </mat-form-field>
+
+            <div class="category-edit-button">
+                @if(isEdit) {
+                <button mat-raised-button color="primary" [disabled]="!name" (click)="update()">Update</button> } @else {
+                <button mat-raised-button color="primary" [disabled]="!name" (click)="add()">Add</button> }
+            </div>
+
+        </div>
+    </form>
+
+</div>

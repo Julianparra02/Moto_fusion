@@ -1,0 +1,87 @@
+<div class="checkout-wrapper">
+
+    @if(orderStep==0){
+    <h1 class="checkout-title">Su carrito de compras</h1>
+
+    <div class="cart-card">
+
+        @for (item of cartItems; track $index) {
+
+        <div class="cart-item">
+            <div class="flex items-center">
+                <img [src]="item.product.images[0]" alt="Product">
+                <div class="cart-item-info">
+                    <h2>{{item.product.name}}</h2>
+                    <p>Price: {{item.product.price}} COP</p>
+                    <span>Monto Total: {{item.product.price * item.quantity}} COP</span>
+                </div>
+            </div>
+
+            <div class="quantity-control">
+                <span (click)="addToCart(item.product._id!,-1)">-</span>
+                <span class="value">{{item.quantity}}</span>
+                <span (click)="addToCart(item.product._id!,1)">+</span>
+            </div>
+        </div>
+
+        }
+
+        <!-- RESUMEN -->
+        <div class="cart-summary">
+            <h2>Cart Summary</h2>
+
+            <div class="row">
+                <span>Total:</span>
+                <span class="total">{{totalAmmount}}</span>
+            </div>
+
+            <button (click)="checkout()">Proceed to Checkout</button>
+        </div>
+
+    </div>
+    } @else if(orderStep==1){
+
+    <h1 class="checkout-title">Su dirección de pedido</h1>
+
+    <form [formGroup]="addressForm" class="address-form">
+
+        <mat-form-field>
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address1">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Address2</mat-label>
+            <input matInput formControlName="address2">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>City</mat-label>
+            <input matInput formControlName="city">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Pincode</mat-label>
+            <input matInput formControlName="pincode">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="addAddress()">Continue</button>
+
+    </form>
+
+    } @else if(orderStep==2){
+
+    <h1 class="checkout-title">Seleccion Metodo de Pago</h1>
+
+    <div class="payment-box">
+        <mat-radio-group [(ngModel)]="paymentType">
+            <mat-radio-button value="cash">PSE</mat-radio-button>
+            <mat-radio-button value="card" disabled>Tarjeta</mat-radio-button>
+        </mat-radio-group>
+
+        <button mat-raised-button color="primary" (click)="completeOrder()">Continue</button>
+    </div>
+
+    }
+
+</div>

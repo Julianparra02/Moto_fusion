@@ -1,0 +1,75 @@
+/* ================================
+   LOGIN CONTAINER
+================================ */
+
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2.5rem;
+    /* mt-10 */
+}
+
+
+/* ================================
+   LOGIN CARD
+================================ */
+
+.login-card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 50%;
+    /* w-6/12 */
+    max-width: 380px;
+    /* sm:w-96 equivalente */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.login-card h2 {
+    font-size: 1.75rem;
+    /* text-2xl */
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+
+/* ================================
+   FORM GROUPS
+================================ */
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+
+/* Ajustes para Angular Material dentro del formulario */
+
+.login-card .mat-form-field {
+    width: 100%;
+}
+
+
+/* ================================
+   BUTTON
+================================ */
+
+.login-card button {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 500px) {
+    .login-card {
+        width: 90%;
+        padding: 1.5rem;
+    }
+}

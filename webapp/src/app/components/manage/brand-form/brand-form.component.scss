@@ -1,0 +1,80 @@
+/* ================================
+   WRAPPER
+================================ */
+
+.brand-wrapper {
+    padding-left: 10rem;
+    /* px-40 */
+    padding-right: 10rem;
+    /* px-40 */
+    margin-top: 2.5rem;
+    /* mt-10 */
+    display: flex;
+    justify-content: center;
+}
+
+
+/* ================================
+   FORM CARD
+================================ */
+
+.brand-form {
+    width: 380px;
+    /* w-96 */
+    padding: 1.5rem;
+    /* p-6 */
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.brand-form h4 {
+    font-size: 0.9rem;
+    /* text-xs */
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+
+/* ================================
+   FORM FIELDS
+================================ */
+
+.brand-form .mat-form-field {
+    width: 100%;
+}
+
+
+/* ================================
+   BUTTON AREA
+================================ */
+
+.brand-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.brand-form button {
+    min-width: 120px;
+    font-weight: 600;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+    .brand-wrapper {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .brand-form {
+        width: 100%;
+        padding: 1.25rem;
+    }
+}

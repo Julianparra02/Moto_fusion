@@ -1,0 +1,100 @@
+/* 🌟 --- GENERAL CONTAINER --- */
+
+.home-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+
+
+/* 🌟 --- CAROUSEL --- */
+
+.carousel-wrapper {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    margin-bottom: 50px;
+}
+
+.carousel-wrapper img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    transition: transform .6s ease-in-out;
+}
+
+.carousel-wrapper img:hover {
+    transform: scale(1.03);
+}
+
+
+/* 🌟 --- SECTION TITLE --- */
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #1a1a1a;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    width: 80px;
+    height: 4px;
+    background: #ff9800;
+    display: block;
+    margin: 8px auto 0;
+    border-radius: 5px;
+}
+
+
+/* 🌟 --- PRODUCT GRID --- */
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.product-card-wrapper {
+    width: 23%;
+    transition: transform .3s ease, box-shadow .3s ease;
+    border-radius: 12px;
+}
+
+.product-card-wrapper:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.20);
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1024px) {
+    .product-card-wrapper {
+        width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-card-wrapper {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.4rem;
+    }
+    .carousel-wrapper img {
+        height: 240px;
+    }
+    .product-card-wrapper {
+        width: 100%;
+    }
+}

@@ -1,0 +1,28 @@
+<div class="brand-wrapper">
+    <form class="brand-form">
+
+        @if(id){
+        <h4>Update Brand</h4>
+        }@else{
+        <h4>Add New Brand</h4>
+        }
+
+        <div>
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput type="text" placeholder="enter brand name" name="name" [(ngModel)]="name" />
+            </mat-form-field>
+        </div>
+
+        <div class="brand-btn-wrapper">
+            @if(id){
+            <button mat-raised-button color="primary" (click)="update()" [disabled]="!name">
+                    Update
+                </button> }@else{
+            <button mat-raised-button color="primary" (click)="add()" [disabled]="!name">
+                    Save
+                </button> }
+        </div>
+
+    </form>
+</div>

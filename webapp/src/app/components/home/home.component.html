@@ -1,0 +1,35 @@
+<div class="home-container">
+
+    <!-- 🔹 CAROUSEL -->
+    <div class="carousel-wrapper">
+        <owl-carousel-o>
+            <ng-template carouselSlide> <img src="assets/images/slider1.png"> </ng-template>
+            <ng-template carouselSlide> <img src="assets/images/slider2.jpeg"> </ng-template>
+            <ng-template carouselSlide> <img src="assets/images/slider3.jpeg"> </ng-template>
+            <ng-template carouselSlide> <img src="assets/images/slider1.png"> </ng-template>
+            <ng-template carouselSlide> <img src="assets/images/slider2.jpeg"> </ng-template>
+            <ng-template carouselSlide> <img src="assets/images/slider3.jpeg"> </ng-template>
+        </owl-carousel-o>
+    </div>
+
+    <!-- 🔹 FEATURED PRODUCTS -->
+    <h4 class="section-title">Productos Destacados</h4>
+    <div class="product-grid">
+        @for(product of featuredProducts; track $index) {
+        <div class="product-card-wrapper shadow">
+            <app-product-card [product]="product"></app-product-card>
+        </div>
+        }
+    </div>
+
+    <!-- 🔹 NEW PRODUCTS -->
+    <h4 class="section-title mt-10">Nuevos Productos</h4>
+    <div class="product-grid">
+        @for(product of newProducts; track $index) {
+        <div class="product-card-wrapper shadow">
+            <app-product-card [product]="product"></app-product-card>
+        </div>
+        }
+    </div>
+
+</div>

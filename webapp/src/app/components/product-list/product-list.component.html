@@ -1,0 +1,83 @@
+<div class="filters-products-wrapper">
+
+    <!-- FILTROS -->
+    <div class="filters-panel">
+        <h6>COMPATIBILIDAD</h6>
+
+        <div class="filter-block">
+            <mat-form-field>
+                <mat-label>Category</mat-label>
+                <mat-select name="categoryId" [(ngModel)]="categoryId" (valueChange)="getProducts()">
+                    @for (item of category; track $index) {
+                    <mat-option [value]="item._id">{{item.name}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="filter-block">
+            <mat-form-field>
+                <mat-label>Brands</mat-label>
+                <mat-select name="brandId" [(ngModel)]="brandId" (valueChange)="getProducts()">
+                    @for (item of brands; track $index) {
+                    <mat-option [value]="item._id">{{item.name}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="filter-block">
+            <mat-form-field>
+                <mat-label>Marca</mat-label>
+                <mat-select name="marca" [(ngModel)]="marca" (selectionChange)="getProducts()">
+                    @for (item of marcas; track $index) {
+                    <mat-option [value]="item">{{item}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="filter-block">
+            <mat-form-field>
+                <mat-label>Modelo</mat-label>
+                <mat-select name="modelos" [(ngModel)]="modelo" (selectionChange)="getProducts()">
+                    @for (item of modelos; track $index) {
+                    <mat-option [value]="item">{{item}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="filter-block">
+            <mat-form-field>
+                <mat-label>Año</mat-label>
+                <mat-select name="year" [(ngModel)]="year" (selectionChange)="getProducts()">
+                    @for (item of years; track $index) {
+                    <mat-option [value]="item">{{item}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <button class="reset-btn" (click)="resetFilters()">
+            Reiniciar filtros
+        </button>
+
+    </div>
+
+    <!-- PRODUCTOS -->
+    <div class="products-panel">
+        <h6>PRODUCTOS</h6>
+
+        <div class="products-grid">
+
+            @for (product of products; track $index) {
+            <div class="product-grid-item">
+                <app-product-card [product]="product"></app-product-card>
+            </div>
+            } @empty {
+            <h6 class="empty-message">NO PRODUCTOS</h6>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+/* ==========================================
+   CARD CONTENEDOR
+========================================== */
+
+.product-card {
+    width: 100%;
+    border-right: 4px solid #e5e7eb;
+    /* border-r-4 */
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.08);
+    /* shadow-lg */
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ==========================================
+   IMAGEN DEL PRODUCTO
+========================================== */
+
+.product-card img {
+    width: 100%;
+    height: 210px;
+    /* h-52 */
+    object-fit: cover;
+    background: #f3f4f6;
+    /* fallback */
+}
+
+
+/* ==========================================
+   CONTENIDO
+========================================== */
+
+.product-card-content {
+    padding: 1rem;
+    /* p-4 */
+}
+
+.product-card-content h6 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: .5rem;
+    color: #111827;
+}
+
+.product-card-content p {
+    font-size: 0.9rem;
+    color: #4b5563;
+    /* gris elegante */
+    margin-bottom: 1rem;
+    min-height: 40px;
+    /* evita que las cards se desalineen */
+}
+
+
+/* ==========================================
+   PRICE + BUTTON
+========================================== */
+
+.product-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-card-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1f2937;
+    /* texto oscuro */
+}
+
+
+/* ==========================================
+   BUTTON (mat-fab)
+========================================== */
+
+.product-card button[mat-fab] {
+    width: 48px;
+    height: 48px;
+    transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.product-card button[mat-fab]:hover {
+    transform: scale(1.08);
+}
+
+.product-card mat-icon {
+    font-size: 22px;
+}

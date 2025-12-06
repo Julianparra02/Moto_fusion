@@ -1,0 +1,169 @@
+/* 🔷 CONTENEDOR GENERAL */
+
+.orders-container {
+    padding: 60px 80px;
+}
+
+
+/* 🔷 TÍTULO GENERAL */
+
+.orders-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+}
+
+
+/* 🔷 TARJETA DE ORDEN */
+
+.order-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 40px;
+    border: 1px solid #e6e6e6;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.order-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18);
+}
+
+
+/* 🔷 CABECERA DE INFORMACIÓN */
+
+.order-header {
+    margin-bottom: 20px;
+}
+
+.order-id {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #222;
+}
+
+.order-info {
+    color: #444;
+    font-size: 0.95rem;
+}
+
+.order-address p {
+    color: #555;
+    margin: 2px 0;
+}
+
+
+/* 🔷 STATUS (mat-button-toggle) */
+
+.order-status-group {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.mat-button-toggle-group {
+    border-radius: 8px !important;
+    overflow: hidden;
+    background-color: #f5f5f5;
+}
+
+.mat-button-toggle {
+    font-weight: 600 !important;
+    padding: 6px 18px !important;
+    font-size: 0.9rem;
+}
+
+.mat-button-toggle-checked {
+    background-color: #ff9800 !important;
+    color: white !important;
+}
+
+
+/* 🔷 ITEMS DE LA ORDEN */
+
+.order-items {
+    margin-top: 15px;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 10px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+
+/* 🔷 PRODUCTO */
+
+.order-item img {
+    width: 85px;
+    height: 85px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
+}
+
+.order-item-details {
+    margin-left: 15px;
+}
+
+.order-item-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #222;
+}
+
+.order-item-price {
+    color: #666;
+    margin: 4px 0;
+}
+
+.order-item-total {
+    font-weight: 600;
+    color: #222;
+}
+
+
+/* 🔷 CANTIDAD */
+
+.order-item-qty {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000;
+}
+
+
+/* RESPONSIVE 📱 */
+
+@media (max-width: 992px) {
+    .orders-container {
+        padding: 40px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .order-card {
+        padding: 20px;
+    }
+    .order-status-group {
+        margin-top: 20px;
+        justify-content: center;
+    }
+    .order-item {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    .order-item img {
+        width: 100%;
+        height: 200px;
+    }
+}

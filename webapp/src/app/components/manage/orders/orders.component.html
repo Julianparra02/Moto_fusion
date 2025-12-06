@@ -1,0 +1,76 @@
+<div class="orders-container py-20 px-20">
+
+    <h3 class="orders-title">Mis órdenes</h3>
+
+    <div class="rounded-lg overflow-hidden">
+
+        @for (order of orders; track $index) {
+
+        <div class="order-card">
+
+            <div class="flex justify-between order-header">
+
+                <!-- 📝 Información de la orden -->
+                <div class="w-6/12">
+                    <h6 class="order-id">Order Id: {{order._id}}</h6>
+                    <p class="order-info">
+                        Fecha: {{order.date | date:'mediumDate'}}
+                    </p>
+
+                    <h6 class="order-id mt-2">Dirección de Envío</h6>
+                    <div class="order-address">
+                        <p>{{order.address.address1}}</p>
+                        <p>{{order.address.address2}}</p>
+                        <p>{{order.address.city}}</p>
+                        <p>{{order.address.pincode}}</p>
+                    </div>
+                </div>
+
+                <!-- 🔄 Status de la orden -->
+                <div class="w-6/12 order-status-group">
+                    <mat-button-toggle-group [value]="order.status" name="status" (change)="statusChanged($event, order)">
+
+                        <mat-button-toggle value="Despachado">Despachado</mat-button-toggle>
+                        <mat-button-toggle value="Enviado">Enviado</mat-button-toggle>
+                        <mat-button-toggle value="Entregado">Entregado</mat-button-toggle>
+
+                    </mat-button-toggle-group>
+                </div>
+            </div>
+
+            <!-- 🛒 Items de la orden -->
+            <div class="order-items shadow-lg">
+
+                @for (item of order.items; track $index) {
+
+                <div class="order-item">
+
+                    <div class="flex items-center">
+                        <img [src]="item.product.images[0]" alt="Producto">
+
+                        <div class="order-item-details">
+                            <h2 class="order-item-title">{{ item.product.name }}</h2>
+                            <p class="order-item-price">Precio: {{ item.product.price }} COP</p>
+                            <span class="order-item-total">
+                                Total: {{ item.product.price * item.quantity }} COP
+                            </span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="font-medium">Cantidad:</span>
+                        <span class="order-item-qty">{{ item.quantity }}</span>
+                    </div>
+
+                </div>
+
+                }
+
+            </div>
+
+        </div>
+
+        }
+
+    </div>
+</div>

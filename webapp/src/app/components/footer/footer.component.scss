@@ -1,0 +1,59 @@
+/* 🌟 Footer general */
+
+footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(4px);
+}
+
+
+/* 🌟 Logo - animación ligera */
+
+footer h2 {
+    letter-spacing: 1px;
+    transition: transform 0.25s ease;
+}
+
+footer h2:hover {
+    transform: scale(1.04);
+}
+
+
+/* 🌟 Descripción */
+
+footer p {
+    transition: color 0.2s ease;
+}
+
+footer p:hover {
+    color: #e0e0e0 !important;
+}
+
+
+/* 🌟 Iconos sociales */
+
+footer a span.material-icons {
+    transition: transform 0.35s cubic-bezier(.23, .67, .34, 1.45), color 0.25s ease;
+}
+
+footer a:hover span.material-icons {
+    transform: translateY(-3px) scale(1.25);
+}
+
+
+/* 🌟 Texto inferior */
+
+footer .border-t {
+    border-top-width: 1.5px;
+    transition: color .2s ease;
+}
+
+footer .border-t:hover {
+    color: #c8e85e;
+}
+
+
+/* 🌟 Suavizar animaciones */
+
+footer * {
+    scroll-behavior: smooth;
+}

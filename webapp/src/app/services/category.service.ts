@@ -10,26 +10,26 @@ export class CategoryServices {
   constructor() {}
   
 getCategories(){
-      return this.http.get<Category[]>('http://localhost:3000/category');
+      return this.http.get<Category[]>(' https://motofusion-production.up.railway.app');
     }
 
 getCategoryById(id:string){
-    return this.http.get<Category[]>('http://localhost:3000/category/'+id);
+    return this.http.get<Category[]>('https://motofusion-production.up.railway.app'+id);
   }
 addCategory(name:string){
-return this.http.post("http://localhost:3000/category",{
+return this.http.post('https://motofusion-production.up.railway.app',{
   name:name
 });
 }
 updateCategory(id:string,name:string){
-return this.http.put('http://localhost:3000/category/' +id,{
+return this.http.put('https://motofusion-production.up.railway.app' +id,{
   name:name
 });
 }
 
 
 deleteCategoryById(id:string){
-    return this.http.delete('http://localhost:3000/category/'+id);
+    return this.http.delete('https://motofusion-production.up.railway.app'+id);
   }
   
 }

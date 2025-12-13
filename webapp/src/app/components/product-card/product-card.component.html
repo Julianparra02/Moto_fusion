@@ -1,6 +1,6 @@
 <div class="product-card" [routerLink]="'/product/' + product._id">
 
-    <img [src]="product.images?.[0] || ''" alt="Product Image">
+    <img [src]="product.images[0] || ''" alt="Product Image">
 
     <div class="product-card-content">
         <h6>{{ product.name }}</h6>

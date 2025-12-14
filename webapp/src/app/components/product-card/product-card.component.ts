@@ -31,15 +31,16 @@ if(!this.isProductInCart(product._id!)){
   });
 }
 } 
-isProductInCart(productId:string) {
-    if (this.cartService.items.find(x => x.product.id === productId)) {
-      return true;
-    }else{
-      return false;
-    }
-
+isProductInCart(productId: string): boolean {
+  if (!productId || !this.cartService?.items?.length) {
+    return false;
   }
-  
+
+  return this.cartService.items.some(
+    item => item?.product?._id === productId
+  );
+}
+
  
 }
 

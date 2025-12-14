@@ -15,7 +15,7 @@ getCategories(){
     }
 
 getCategoryById(id:string){
-    return this.http.get<Category[]>(environment.apiUrl+'/categories/'+id);
+    return this.http.get<Category>(environment.apiUrl+'/categories/'+id);
   }
 addCategory(name:string){
 return this.http.post(environment.apiUrl+'/categories/',{

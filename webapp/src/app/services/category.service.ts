@@ -30,7 +30,7 @@ return this.http.put(environment.apiUrl+'/categories/' +id,{
 
 
 deleteCategoryById(id:string){
-    return this.http.delete(environment.apiUrl+'/category/'+id);
+    return this.http.delete(environment.apiUrl+'/categories/'+id);
   }
   
 }

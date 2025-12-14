@@ -7,13 +7,14 @@ import {MatRadioModule} from '@angular/material/radio';
 import { Order } from '../../types/order';
 import { OrderService } from '../../services/order.service';
 import { Router } from '@angular/router';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
 @Component({
   selector: 'app-shopping-cart',
   standalone: true,
-  imports: [ReactiveFormsModule,MatInputModule,MatButtonModule,MatRadioModule,FormsModule],
+  imports: [ReactiveFormsModule,MatInputModule,MatButtonModule,MatRadioModule,FormsModule,MatSnackBarModule ],
   templateUrl: './shopping-cart.component.html',
   styleUrl: './shopping-cart.component.scss'
 })
@@ -60,18 +61,51 @@ addAddress(){
 }
 orderService=inject(OrderService);
 router=inject(Router);
-completeOrder(){
-  let order : Order ={
-    items:this.cartItems,
-    paymentType:this.paymentType,
-    address:this.addressForm.value,
-    date:new Date(),
+snackBar = inject(MatSnackBar);
+completeOrder() {
+  const order: Order = {
+    items: this.cartItems,
+    paymentType: this.paymentType,
+    address: this.addressForm.value,
+    date: new Date(),
   };
-this.orderService.addOrder(order).subscribe((result)=>{
-  alert("Tu pedido está cumplido");
-this.cartService.init();
-this.orderStep=0;
-this.router.navigateByUrl('/orders');
-});
+
+  this.orderService.addOrder(order).subscribe({
+    next: () => {
+      // 🎉 MENSAJE BONITO
+      const snack = this.snackBar.open(
+        '✅ Tu pedido fue realizado con éxito',
+        'Ver pedidos',
+        {
+          duration: 4000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['success-snackbar']
+        }
+      );
+
+      // 👉 Acción del botón
+      snack.onAction().subscribe(() => {
+        this.router.navigateByUrl('/orders');
+      });
+
+      // 🧹 limpiar carrito y estado
+      this.cartService.init();
+      this.orderStep = 0;
+    },
+    error: () => {
+      this.snackBar.open(
+        '❌ Error al procesar el pedido',
+        'Cerrar',
+        {
+          duration: 4000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['error-snackbar']
+        }
+      );
+    }
+  });
 }
+
 }

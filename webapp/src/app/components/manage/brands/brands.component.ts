@@ -1,15 +1,14 @@
 import { Component, inject, ViewChild } from '@angular/core';
 
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {MatSort, MatSortModule} from '@angular/material/sort';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { CategoryServices } from '../../../services/category.service';
-import { CategoryFormComponent } from '../category-form/category-form.component';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
-import { Category } from '../../../types/category';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
 import { Brand } from '../../../types/brand';
 import { BrandService } from '../../../services/brand.service';
 
@@ -23,38 +22,48 @@ import { BrandService } from '../../../services/brand.service';
     MatSortModule,
     MatPaginatorModule,
     MatButtonModule,
-    RouterLink],
+    MatSnackBarModule,
+    RouterLink
+  ],
   templateUrl: './brands.component.html',
   styleUrl: './brands.component.scss'
 })
 export class BrandsComponent {
+
   displayedColumns: string[] = ['id', 'name', 'action'];
-  dataSource: MatTableDataSource<Brand>;
+  dataSource: MatTableDataSource<Brand> = new MatTableDataSource<Brand>([]);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  brandServices=inject(BrandService);
-  constructor() {
- 
-    this.dataSource = new MatTableDataSource([] as any);
-  }
- ngOnInit(){
+  private brandServices = inject(BrandService);
+  private snackBar = inject(MatSnackBar);
+
+  ngOnInit(): void {
     this.getServerData();
   }
-  private getServerData() {
-    this.brandServices.getBrands().subscribe((result) => {
-      console.log(result);
-      this.dataSource.data = result;
+
+  private getServerData(): void {
+    this.brandServices.getBrands().subscribe({
+      next: (result) => {
+        this.dataSource.data = result;
+      },
+      error: () => {
+        this.snackBar.open(
+          'Error al cargar las marcas',
+          'Cerrar',
+          { duration: 3000 }
+        );
+      }
     });
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
-  applyFilter(event: Event) {
+  applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -62,12 +71,28 @@ export class BrandsComponent {
       this.dataSource.paginator.firstPage();
     }
   }
-  delete(id:string){
-    console.log(id);
-    this.brandServices.deleteBrandById(id).subscribe((result:any)=>{
-    alert("Brand deleted.");
-    this.getServerData();
+
+  delete(id: string): void {
+    this.brandServices.deleteBrandById(id).subscribe({
+      next: () => {
+        this.snackBar.open(
+          'Marca eliminada correctamente',
+          'Aceptar',
+          {
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'top'
+          }
+        );
+        this.getServerData();
+      },
+      error: () => {
+        this.snackBar.open(
+          'Error al eliminar la marca',
+          'Cerrar',
+          { duration: 3000 }
+        );
+      }
     });
   }
-
 }

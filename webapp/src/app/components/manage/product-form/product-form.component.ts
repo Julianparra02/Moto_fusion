@@ -12,6 +12,7 @@ import { CategoryServices } from '../../../services/category.service';
 import { ProductService } from '../../../services/product.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product-form',
@@ -23,7 +24,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatCardModule,
     MatIconModule,
   MatCheckboxModule,
-  RouterModule 
+  RouterModule,
+  MatSnackBarModule
 ],
     
   templateUrl: './product-form.component.html',
@@ -56,6 +58,7 @@ export class ProductFormComponent {
   id!: string;
   route = inject(ActivatedRoute);
   router = inject(Router);
+  snackBar = inject(MatSnackBar);
 
   ngOnInit() {
     this.categoryServices.getCategories().subscribe(result => {
@@ -94,23 +97,62 @@ export class ProductFormComponent {
     }
   }
 
-  addProduct() {
-    let value = this.productForm.value;
-    console.log(value);
-    this.productService.addProduct(value as any).subscribe(result => {
-      alert("Producto Added");
-      this.router.navigateByUrl("/admin/products");
-    });
-  }
+addProduct() {
+  const value = this.productForm.value;
+  console.log(value);
 
-  updateProduct() {
-    let value = this.productForm.value;
-    console.log(value);
-    this.productService.updateProduct(this.id, value as any).subscribe(result => {
-      alert("Producto Updated");
-      this.router.navigateByUrl("/admin/products");
-    });
-  }
+  this.productService.addProduct(value as any).subscribe({
+    next: () => {
+      this.snackBar.open(
+        'Producto agregado correctamente',
+        'Aceptar',
+        {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top'
+        }
+      );
+
+      this.router.navigateByUrl('/admin/products');
+    },
+    error: () => {
+      this.snackBar.open(
+        'Error al agregar el producto',
+        'Cerrar',
+        { duration: 3000 }
+      );
+    }
+  });
+}
+
+updateProduct() {
+  const value = this.productForm.value;
+  console.log(value);
+
+  this.productService.updateProduct(this.id, value as any).subscribe({
+    next: () => {
+      this.snackBar.open(
+        'Producto actualizado correctamente',
+        'Aceptar',
+        {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top'
+        }
+      );
+
+      this.router.navigateByUrl('/admin/products');
+    },
+    error: () => {
+      this.snackBar.open(
+        'Error al actualizar el producto',
+        'Cerrar',
+        { duration: 3000 }
+      );
+    }
+  });
+}
+
 
   // MÉTODOS PARA IMÁGENES
   addImage() {

@@ -29,7 +29,7 @@ export class ProductListComponent implements OnInit {
 
   // 🔹 filtros de compatibilidad
   marca: string = '';                      // marca del PRODUCTO (raíz)
-  marcas: string[] = ["YAMAHA","SUZUKI","KAWASAKI","HONDA"];                   // se llenará con getBrands()
+  marcas: string[] = ["YAMAHA","SUZUKI","KAWASAKI","HONDA","PULSAR"];                   // se llenará con getBrands()
   modelo: string = '';                     // modelo de la MOTO (compatibilidad.modelo)
   modelos: string[] = ["YZFR15", "150CC", "250CC", "MT-15", "Gixxer 150CC", "CDF-160", "Ninja 150", "GSX R150"];
   year: number | undefined = undefined;    // year de la MOTO (compatibilidad.year)
@@ -50,11 +50,7 @@ export class ProductListComponent implements OnInit {
       this.brands = result;
     });
 
-    this.route.queryParams.subscribe((x: any) => {
-      this.searchTerm = x.search || '';
-      this.categoryId = x.categoryId || '';
-      this.getProducts();
-    });
+  
   }
 
   getProducts() {

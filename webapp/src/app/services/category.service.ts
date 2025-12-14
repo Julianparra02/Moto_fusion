@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Category } from '../types/category';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,26 +11,26 @@ export class CategoryServices {
   constructor() {}
   
 getCategories(){
-      return this.http.get<Category[]>(' https://motofusion-production.up.railway.app');
+      return this.http.get<Category[]>(environment.apiUrl+'/Category');
     }
 
 getCategoryById(id:string){
-    return this.http.get<Category[]>('https://motofusion-production.up.railway.app'+id);
+    return this.http.get<Category[]>(environment.apiUrl+'/Category/'+id);
   }
 addCategory(name:string){
-return this.http.post('https://motofusion-production.up.railway.app',{
+return this.http.post(environment.apiUrl+'/Category/',{
   name:name
 });
 }
 updateCategory(id:string,name:string){
-return this.http.put('https://motofusion-production.up.railway.app' +id,{
+return this.http.put(environment.apiUrl+'/Category/' +id,{
   name:name
 });
 }
 
 
 deleteCategoryById(id:string){
-    return this.http.delete('https://motofusion-production.up.railway.app'+id);
+    return this.http.delete(environment.apiUrl+'/category/'+id);
   }
   
 }

@@ -32,7 +32,7 @@ if(!this.isProductInCart(product._id!)){
 }
 } 
 isProductInCart(productId:string) {
-    if (this.cartService.items.find(x => x.product._id === productId)) {
+    if (this.cartService.items.find(x => x.product.id === productId)) {
       return true;
     }else{
       return false;

@@ -11,19 +11,19 @@ export class CategoryServices {
   constructor() {}
   
 getCategories(){
-      return this.http.get<Category[]>(environment.apiUrl+'/Category');
+      return this.http.get<Category[]>(environment.apiUrl+'/categories');
     }
 
 getCategoryById(id:string){
-    return this.http.get<Category[]>(environment.apiUrl+'/Category/'+id);
+    return this.http.get<Category[]>(environment.apiUrl+'/categories/'+id);
   }
 addCategory(name:string){
-return this.http.post(environment.apiUrl+'/Category/',{
+return this.http.post(environment.apiUrl+'/categories/',{
   name:name
 });
 }
 updateCategory(id:string,name:string){
-return this.http.put(environment.apiUrl+'/Category/' +id,{
+return this.http.put(environment.apiUrl+'/categories/' +id,{
   name:name
 });
 }

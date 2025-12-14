@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Category } from '../types/category';
 import { environment } from '../../environments/environment';
@@ -7,30 +7,49 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class CategoryServices {
-  http=inject(HttpClient);
+
+  private http = inject(HttpClient);
+  private apiUrl = `${environment.apiUrl}/category`;
+
   constructor() {}
-  
-getCategories(){
-      return this.http.get<Category[]>(environment.apiUrl+'/categories');
-    }
 
-getCategoryById(id:string){
-    return this.http.get<Category>(environment.apiUrl+'/categories/'+id);
+  private getHeaders() {
+    const token = localStorage.getItem('token');
+    return {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`
+      })
+    };
   }
-addCategory(name:string){
-return this.http.post(environment.apiUrl+'/Category/',{
-  name:name
-});
-}
-updateCategory(id:string,name:string){
-return this.http.put(environment.apiUrl+'/Category/' +id,{
-  name:name
-});
-}
 
-
-deleteCategoryById(id:string){
-    return this.http.delete(environment.apiUrl+'/Category/'+id);
+  getCategories() {
+    return this.http.get<Category[]>(this.apiUrl, this.getHeaders());
   }
-  
+
+  getCategoryById(id: string) {
+    return this.http.get<Category>(`${this.apiUrl}/${id}`, this.getHeaders());
+  }
+
+  addCategory(name: string) {
+    return this.http.post(
+      this.apiUrl,
+      { name },
+      this.getHeaders()
+    );
+  }
+
+  updateCategory(id: string, name: string) {
+    return this.http.put(
+      `${this.apiUrl}/${id}`,
+      { name },
+      this.getHeaders()
+    );
+  }
+
+  deleteCategoryById(id: string) {
+    return this.http.delete(
+      `${this.apiUrl}/${id}`,
+      this.getHeaders()
+    );
+  }
 }

@@ -11,26 +11,26 @@ export class CategoryServices {
   constructor() {}
   
 getCategories(){
-      return this.http.get<Category[]>(environment.apiUrl+'/category');
+      return this.http.get<Category[]>(environment.apiUrl+'/categories');
     }
 
 getCategoryById(id:string){
-    return this.http.get<Category>(environment.apiUrl+'/category/'+id);
+    return this.http.get<Category>(environment.apiUrl+'/categories/'+id);
   }
 addCategory(name:string){
-return this.http.post(environment.apiUrl+'/category/',{
+return this.http.post(environment.apiUrl+'/Category/',{
   name:name
 });
 }
 updateCategory(id:string,name:string){
-return this.http.put(environment.apiUrl+'/category/' +id,{
+return this.http.put(environment.apiUrl+'/Category/' +id,{
   name:name
 });
 }
 
 
 deleteCategoryById(id:string){
-    return this.http.delete(environment.apiUrl+'/category/'+id);
+    return this.http.delete(environment.apiUrl+'/Category/'+id);
   }
   
 }

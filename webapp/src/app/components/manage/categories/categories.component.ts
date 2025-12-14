@@ -43,20 +43,21 @@ export class CategoriesComponent {
     this.getServerData();
   }
 
-  private getServerData(): void {
-    this.categoryServices.getCategories().subscribe({
-      next: (result) => {
-        this.dataSource.data = result;
-      },
-      error: () => {
-        this.snackBar.open(
-          'Error al cargar las categorías',
-          'Cerrar',
-          { duration: 3000 }
-        );
-      }
-    });
-  }
+ private getServerData(): void {
+  this.categoryServices.getCategories().subscribe({
+    next: (result: any) => {
+      this.dataSource.data = result.categories; // 👈 AQUÍ ESTÁ LA CLAVE
+    },
+    error: () => {
+      this.snackBar.open(
+        'Error al cargar las categorías',
+        'Cerrar',
+        { duration: 3000 }
+      );
+    }
+  });
+}
+
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;

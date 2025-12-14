@@ -66,7 +66,7 @@ export class CategoryFormComponent {
           }
         );
 
-        this.router.navigateByUrl('/admin/category');
+        this.router.navigateByUrl('/admin/categories');
       },
       error: () => {
         this.snackBar.open(
@@ -93,7 +93,7 @@ export class CategoryFormComponent {
           }
         );
 
-        this.router.navigateByUrl('/admin/category');
+        this.router.navigateByUrl('/admin/categories');
       },
       error: () => {
         this.snackBar.open(

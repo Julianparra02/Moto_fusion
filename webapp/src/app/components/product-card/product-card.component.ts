@@ -32,7 +32,7 @@ if(!this.isProductInCart(product._id!)){
 }
 } 
 isProductInCart(productId: string): boolean {
-  if (!productId || !this.cartService?.items?.length) {
+  if (!productId || !this.cartService.items.length) {
     return false;
   }
 
